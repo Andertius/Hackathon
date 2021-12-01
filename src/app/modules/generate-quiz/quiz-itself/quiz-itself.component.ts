@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CanActivate, Router } from '@angular/router';
 import { QuizQuestion } from 'src/app/models/quiz-question.model';
@@ -10,7 +10,8 @@ import { ResultsComponent } from '../results/results.component';
   templateUrl: './quiz-itself.component.html',
   styleUrls: ['./quiz-itself.component.scss']
 })
-export class QuizItselfComponent implements OnInit {
+export class QuizItselfComponent implements OnInit, AfterViewInit {
+  private startTime!: Date;
 
   public questions: QuizQuestion[] = [];
   public category!: string;
@@ -31,6 +32,10 @@ export class QuizItselfComponent implements OnInit {
     this.difficulty = this._questionsService.difficulty;
   }
 
+  ngAfterViewInit(): void {
+    this.startTime = new Date();
+  }
+
   public submit(): void {
     let correctAnswers = this.countCorrectAnswers();
 
@@ -44,7 +49,7 @@ export class QuizItselfComponent implements OnInit {
         questionNumber: this.questions.length,
         category: this.category,
         difficulty: this.difficulty,
-        time: new Date(),
+        time: new Date().getTime() - this.startTime.getTime(),
         correctQuestionNumber: correctAnswers,
       }
     });
