@@ -1,0 +1,12 @@
+.container {
+    width: 50%;
+    justify-content: center;
+}
+
+.form {
+    background-color: rgb(54, 54, 54);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}

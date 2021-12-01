@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>QUIZ!!!!!!!!!</h1>
+
+    <div class="question-container">
+        <div class="question-wrapper" *ngFor="let question of questions; let i = index">
+            <p class="question"> {{ question.questionNumber }}. {{ question.question }}</p>
+    
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button id="{{ i }}-t" [value]="true" class="true">True</mat-radio-button>
+                <mat-radio-button id="{{ i + 1 }}-f" [value]="false">False</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    
+        <button mat-button (click)="submit()">Finish</button>
+    </div>
+</div>

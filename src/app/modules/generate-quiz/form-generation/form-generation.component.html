@@ -1,0 +1,32 @@
+<div class="container">
+    <form [formGroup]="quizForm" (ngSubmit)="submit()" class="form">
+        <h4>GENERATE YOUR QUIZ</h4>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Question Number</mat-label>
+            <input matInput type="number"  formControlName="questionNumber">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Question Number</mat-label>
+            <mat-select formControlName="category">
+                <mat-option value="9">General Knowledge</mat-option>
+                <mat-option value="18">Computers</mat-option>
+                <mat-option value="22">Geography</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" >
+            <mat-label>Difficulty</mat-label>
+            <mat-select formControlName="difficulty">
+                <mat-option value="easy">Easy</mat-option>
+                <mat-option value="medium">Medium</mat-option>
+                <mat-option value="hard">Hard</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-checkbox class="favorite-checkbox" [disabled]="!quizForm.valid">Mark as favorite</mat-checkbox>
+
+        <button mat-button type="submit">Submit</button>
+    </form>
+</div>
